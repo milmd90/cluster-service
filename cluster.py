@@ -4,22 +4,21 @@ import numpy as np
 from joblib import dump, load
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
-from sklearn.ensemble import RandomForestRegressor
 
 N_CLUSTERS = 15
 DATA_PATH = "data"
 DATA_FILE_NAME = "sale_data.csv"
-MODEL_PATH = "models"
-MODEL_FILE_NAME = "clusterer.joblib"
+CLUSTERER_PATH = "models"
+CLUSTERER_FILE_NAME = "clusterer.joblib"
 
 def cluster():
     data = open_file(os.path.join(DATA_PATH, DATA_FILE_NAME))
     X = process_data(data)
     # quick (but probably terrible) clusterer for now
     clusterer = KMeans(n_clusters=N_CLUSTERS).fit(X)
-    dump(clusterer, MODEL_FILE_NAME)
-    with open(os.path.join(MODEL_PATH, MODEL_FILE_NAME), 'wb') as model_file:
+    with open(os.path.join(CLUSTERER_PATH, CLUSTERER_FILE_NAME), 'wb') as model_file:
         dump(clusterer, model_file)
+    return X, clusterer.labels_
 
 def open_file(file_name):
     with open(file_name, "r") as file:
@@ -56,6 +55,3 @@ def process_data(data):
     # transpose columns
     X = np.array(cols).T
     return X
-
-if __name__ == '__main__':
-    cluster()
