@@ -1,16 +1,16 @@
-import numpy as np
-import csv
 import os
-from sklearn.cluster import KMeans
-from sklearn import preprocessing
+import csv
+import numpy as np
 from joblib import dump, load
+from sklearn import preprocessing
+from sklearn.cluster import KMeans
 from sklearn.ensemble import RandomForestRegressor
 
-DATA_PATH = "data"
-MODEL_PATH = "models"
-DATA_FILE_NAME = "sale_data.csv"
-MODEL_FILE_NAME = "clusterer.joblib"
 N_CLUSTERS = 15
+DATA_PATH = "data"
+DATA_FILE_NAME = "sale_data.csv"
+MODEL_PATH = "models"
+MODEL_FILE_NAME = "clusterer.joblib"
 
 def cluster():
     data = open_file(os.path.join(DATA_PATH, DATA_FILE_NAME))
