@@ -11,6 +11,7 @@ DATA_FILE_NAME = "sale_data.csv"
 DEMO_FILE_NAME = "demo.joblib"
 CLUSTERER_PATH = "models"
 CLUSTERER_FILE_NAME = "clusterer.joblib"
+ENCODER_FILE_NAME = "encoder.joblib"
 # rows for these will be removed from training data, and saved for demo cluster prediction
 DEMO_SALE_CODES = [
     "ZZZQ2",
@@ -59,6 +60,8 @@ def process_data(data):
     for col in str_cols:
         encoded_str_col = encoder.fit_transform(col)
         encoded_str_cols.append(encoded_str_col)
+    with open(os.path.join( DATA_PATH, ENCODER_FILE_NAME), 'wb') as encoder_file:
+        dump(encoder, encoder_file)
     # join columns after encoding
     cols = []
     for col in int_cols:
