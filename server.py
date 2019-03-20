@@ -12,8 +12,8 @@ from demo import DEMO_CLUSTER_1, DEMO_CLUSTER_2, DEMO_CLUSTER_3
 # mimic the response of the looker API
 
 CLUSTER_1_FILE = "cluster_1.csv"
-CLUSTER_2_FILE = "clusert_2.csv"
-CLUSTER_3_FILE = "clusert_3.csv"
+CLUSTER_2_FILE = "cluster_2.csv"
+CLUSTER_3_FILE = "cluster_3.csv"
 
 app = Flask("cluster-service")
 cors = CORS(app)
