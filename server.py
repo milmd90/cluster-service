@@ -47,7 +47,9 @@ def recommend(sale_code):
     "name": data[i][2],
     "price": data[i][3] 
     } for i in range(len(data))]
-  return jsonify(products)
+  return jsonify({
+    "products": products
+  })
   
 
 def magic(sale_code):
